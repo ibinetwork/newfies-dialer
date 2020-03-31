@@ -62,7 +62,7 @@ func_identify_os() {
         DEBIANCODE=$(lsb_release -cs)
     elif [ -f /etc/redhat-release ] ; then
         DIST='CENTOS'
-        if [ "$(awk '{print $3}' /etc/redhat-release)" != "6.2" ] && [ "$(awk '{print $3}' /etc/redhat-release)" != "6.3" ] && [ "$(awk '{print $3}' /etc/redhat-release)" != "6.4" ] && [ "$(awk '{print $3}' /etc/redhat-release)" != "6.5" ]; then
+        if [ "$(awk '{print $3}' /etc/redhat-release)" != "6.2" ] && [ "$(awk '{print $3}' /etc/redhat-release)" != "6.3" ] && [ "$(awk '{print $3}' /etc/redhat-release)" != "6.4" ] && [ "$(awk '{print $3}' /etc/redhat-release)" != "6.11" ]; then
             echo $SCRIPT_NOTICE
             exit 255
         fi
@@ -212,9 +212,9 @@ func_install_dependencies(){
             apt-get -y install flite
 
             #Install Node.js & NPM
-            apt-get -y install nodejs-legacy
-            curl -sL https://deb.nodesource.com/setup | bash -
-            apt-get install -y nodejs
+            #apt-get -y install nodejs-legacy
+            #curl -sL https://deb.nodesource.com/setup | bash -
+            apt-get install -y nodejs npm
 
             # cd /usr/src/ ; git clone https://github.com/joyent/node.git
             # # 'git tag' shows all available versions: select the latest stable.
